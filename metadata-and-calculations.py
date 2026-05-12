@@ -1,12 +1,27 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "ase==3.28.0",
+#     "marimo>=0.23.6",
+#     "matplotlib==3.10.9",
+# ]
+# ///
+
 import marimo
 
-__generated_with = "0.23.5"
+__generated_with = "0.23.6"
 app = marimo.App(width="medium")
 
 
 @app.cell
 def _():
     import marimo as mo
+
+    return (mo,)
+
+
+@app.cell
+def _():
     import ase.io
     import pathlib
     import matplotlib.pyplot as plt
@@ -17,7 +32,7 @@ def _():
     import re
     import shutil
 
-    return aims_calc, ase, datetime, mo, pathlib, re, shutil, uuid
+    return aims_calc, ase, datetime, pathlib, re, shutil, uuid
 
 
 @app.cell(hide_code=True)
@@ -203,7 +218,7 @@ def _(mo):
     aims_settings = mo.ui.code_editor(
         language="python",
         value=aims_placeholder,
-    
+
     )
     slurm_settings = mo.ui.code_editor(
         language="bash",
