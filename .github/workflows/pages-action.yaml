@@ -6,6 +6,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+
       - name: 📄 Export notebook
         run: |
           marimo export html-wasm metadata-and-calculations.py -o wasm --mode run
